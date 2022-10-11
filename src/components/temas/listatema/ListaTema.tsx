@@ -19,7 +19,7 @@ function ListaTema() {
 
   useEffect (()=>{
     if (token === ''){
-      toast.error('Você precisa estar logado'), {
+      toast.error('Você precisa estar logado', {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -28,7 +28,7 @@ function ListaTema() {
         draggable: false,
         theme: "colored",
         progress: undefined,
-    };
+    });
       navigate('/login')
     }
   }, [token])
@@ -37,7 +37,7 @@ function ListaTema() {
   async function getTema(){
     await busca("/tema", setTemas, {
       headers: {
-        'Autorization': token
+        'Authorization': token
       }
     })
   }

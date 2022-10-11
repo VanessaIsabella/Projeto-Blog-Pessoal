@@ -12,7 +12,7 @@ import {toast} from 'react-toastify';
 function CadastroPost() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [temas, setTemas] = useState<Tema[]>([])
+    const [temas, setTemas] = useState<Tema[]>([]);
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
@@ -69,7 +69,7 @@ function CadastroPost() {
     }
 
     async function findByIdPostagem(id: string) {
-        await buscaId(`postagens/${id}`, setPostagem, {
+        await buscaId(`postagem/${id}`, setPostagem, {
             headers: {
                 'Authorization': token
             }
@@ -90,7 +90,7 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, {
+            put(`/postagem`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
@@ -106,7 +106,7 @@ function CadastroPost() {
                 progress: undefined,
               });
         } else {
-            post(`/postagens`, postagem, setPostagem, {
+            post(`/postagem`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }

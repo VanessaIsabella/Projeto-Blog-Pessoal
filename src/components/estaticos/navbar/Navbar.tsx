@@ -58,7 +58,7 @@ navbarComponent= <AppBar className= "navbar" position="static">
       </Box>
       </Link>
 
-      <Link to="/temas" className="text-decorator-none">
+      <Link to="/tema" className="text-decorator-none">
       <Box mx={1} className="cursor">
         <Typography variant="h6" color="inherit" className="fonte">
           Temas
