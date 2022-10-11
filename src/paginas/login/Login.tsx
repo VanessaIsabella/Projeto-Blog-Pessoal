@@ -1,15 +1,18 @@
 import { Typography, Button } from '@material-ui/core';
 import { Box, Grid, TextField } from '@mui/material';
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import { toast } from 'react-toastify';
 import UsuarioLogin from '../../model/UserLogin';
 import { api, login } from '../../service/Service';
+import { addToken } from '../../store/tokens/actions';
 import './Login.css';
 
 function Login() {
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
+  const dispatch = useDispatch();
+  const [token, setToken] = useState('');
   const [userLogin, setUserLogin] = useState<UsuarioLogin>({
     id: 0,
     nome: '',
@@ -26,20 +29,40 @@ function Login() {
     });
   }
 
+  useEffect (()=>{
+    if(token != ''){
+      dispatch(addToken(token));
+      navigate('/home')
+    }
+  }, [token])
+
   async function conectar(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
       await login('usuarios/logar', userLogin, setToken);
+      toast.success('Usuário logado com sucesso!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+        });
     } catch (error) {
-      alert('Dados de usuário inválidos, Tente novamente.')
+      toast.error('Dados de usuário inválidos, Tente novamente.', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+        });
     }
   }
-
-  useEffect(() => {
-    if (token !== '') {
-      navigate('/home');
-    }
-  }, [token]);
 
   return (
     <>

@@ -1,83 +1,37 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button, Grid } from "@material-ui/core"
-import {Navigate, useNavigate, useParams } from 'react-router-dom'
+import {Navigate, useNavigate, useParams, Link } from 'react-router-dom'
 import {Box} from '@mui/material';
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
 import './Home.css';
-import useLocalStorage from 'react-use-localstorage';
-import Tema from '../../model/Tema';
-import { busca, buscaId, post, put } from '../../service/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import {toast} from 'react-toastify';
 
 
-
-function CadastroTema() {
+function Home() {
     let navigate = useNavigate();
-    const { id } = useParams<{id: string}>();
-    const [token, setToken] = useLocalStorage('token');
-    const [tema, setTema] = useState<Tema>({
-        id: 0,
-        descricao: ''
-    })
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error('Você precisa estar logado', {
+                position: "top-right", 
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false, 
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+              });
             navigate("/login")
     
         }
     }, [token])
-
-    useEffect(() =>{
-        if(id !== undefined){
-            findById(id)
-        }
-    }, [id])
-
-    async function findById(id: string) {
-        buscaId(`/tema/${id}`, setTema, {
-            headers: {
-              'Authorization': token
-            }
-          })
-        }
-
-        function updatedTema(e: ChangeEvent<HTMLInputElement>) {
-
-            setTema({
-                ...tema,
-                [e.target.name]: e.target.value,
-            })
-    
-        }
-        
-        async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-            e.preventDefault()
-            console.log("tema " + JSON.stringify(tema))
-    
-            if (id !== undefined) {
-                console.log(tema)
-                put(`/tema`, tema, setTema, {
-                    headers: {
-                        'Authorization': token
-                    }
-                })
-                alert('Tema atualizado com sucesso');
-            } else {
-                post(`/tema`, tema, setTema, {
-                    headers: {
-                        'Authorization': token
-                    }
-                })
-                alert('Tema cadastrado com sucesso');
-            }
-            back()
-    
-        }
-    
-        function back() {
-            navigate("/temas")
-        }
   
         return (
             <>
@@ -91,7 +45,9 @@ function CadastroTema() {
                             <Box marginRight={1}>
                                 <ModalPostagem />
                             </Box>
+                            <Link to="/posts" className='text-decorator-none'>
                             <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                            </Link>
                         </Box>
                     </Grid>
                     <Grid item xs={6} >
@@ -105,4 +61,4 @@ function CadastroTema() {
         );
     }    
 
-export default CadastroTema;
+export default Home;
