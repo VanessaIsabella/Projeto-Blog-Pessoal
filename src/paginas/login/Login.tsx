@@ -52,50 +52,50 @@ function Login() {
         <Grid item xs={6} alignItems="center" justifyContent="center">
           <Box paddingX={20}>
             <form onSubmit={conectar}>
-              <Typography variant="h2" align="center">
-                Entrar
+              <Typography variant="h2" align="center" className="fonte"> 
+                Entrar 
               </Typography>
 
-              <TextField
+              <TextField className="fonte"
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   updateModel(event)
                 }
                 value={userLogin.usuario}
-                id="usuario"
+                id="usuario" 
                 name="usuario"
                 label="Usuário"
                 variant="outlined"
                 fullWidth
                 margin="normal"
               />
-              <TextField
+              <TextField className="fonte"
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   updateModel(event)
                 }
                 value={userLogin.senha}
                 id="senha"
-                name="senha"
+                name="senha" 
                 label="Senha"
                 variant="outlined"
                 type="password"
                 fullWidth
                 margin="normal"
               />
-              <Box display="flex" justifyContent="center" marginTop={2}>
-                <Button type="submit" variant="contained" color="primary">
-                  Entrar
+              <Box display="flex" justifyContent="center" marginTop={2} >
+                <Button type="submit" className="fonte" variant="contained" color="primary" style={{backgroundColor:'#857b71'}}>
+                  Entrar 
                 </Button>
               </Box>
             </form>
 
             <Box display="flex" justifyContent="center" marginTop={2}>
               <Box marginRight={1}>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" className="fonte">
                   Ainda não tem uma conta?
                 </Typography>
               </Box>
               <Link to="/cadastrousuario">
-                <Typography variant="subtitle1" align="center">
+                <Typography variant="subtitle1" align="center" className="fonte">
                   Cadastre-se
                 </Typography>
               </Link>

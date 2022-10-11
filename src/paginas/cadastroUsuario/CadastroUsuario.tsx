@@ -25,7 +25,7 @@ function CadastroUsuario() {
     foto: '',
   });
 
-//coloca a info do backenda aqui 
+//coloca a info do backend aqui 
   const [userResult, setUserResult] = useState<User>({
     id: 0,
     nome: '',

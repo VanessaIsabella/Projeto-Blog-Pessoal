@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 .cursor{
     cursor: pointer;
     color: white;
@@ -6,4 +8,8 @@
 .logout {
     text-decoration: none;
     color: #fff;
+  }
+
+  .navbar{
+    background-color: #806251 !important;
   }

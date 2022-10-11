@@ -14,7 +14,7 @@ function Footer() {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid alignItems="center" item xs={12}>
+        <Grid alignItems="center" item xs={12} style={{backgroundColor: '#806251'}}>
           <Box>
             <Box
               paddingTop={1}
@@ -23,6 +23,7 @@ function Footer() {
               justifyContent="center"
             >
               <Typography
+              className="entrar"
                 variant="h5"
                 align="center"
                 gutterBottom
@@ -53,9 +54,10 @@ function Footer() {
               </a>
             </Box>
           </Box>
-          <Box style={{ backgroundColor: '#303F9F', height: '60px' }}>
+          <Box style={{ backgroundColor: '#806251', height: '60px' }}>
             <Box paddingTop={1}>
               <Typography
+              className="entrar"
                 variant="subtitle2"
                 align="center"
                 gutterBottom
@@ -66,7 +68,7 @@ function Footer() {
             </Box>
             <Box>
               <a target="_blank" href="https://brasil.generation.org">
-                <Typography
+                <Typography className="entrar"
                   variant="subtitle2"
                   gutterBottom
                   style={{ color: 'white' }}

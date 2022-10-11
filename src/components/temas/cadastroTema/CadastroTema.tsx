@@ -1,14 +1,10 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
-import { Container, Typography, TextField, Button, Grid } from "@material-ui/core"
+import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {Navigate, useNavigate, useParams } from 'react-router-dom'
-import {Box} from '@mui/material';
-import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
-import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
-import './Home.css';
+import './CadastroTema.css';
 import useLocalStorage from 'react-use-localstorage';
-import Tema from '../../model/Tema';
-import { busca, buscaId, post, put } from '../../service/Service';
-
+import Tema from '../../../model/Tema';
+import { buscaId, post, put } from '../../../service/Service';
 
 
 function CadastroTema() {
@@ -76,33 +72,20 @@ function CadastroTema() {
         }
     
         function back() {
-            navigate("/temas")
+            navigate('/temas')
         }
   
-        return (
-            <>
-                <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
-                    <Grid alignItems="center" item xs={6}>
-                        <Box paddingX={20} >
-                            <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Seja bem vindo(a)!</Typography>
-                            <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>expresse aqui os seus pensamentos e opiniões!</Typography>
-                        </Box>
-                        <Box display="flex" justifyContent="center">
-                            <Box marginRight={1}>
-                                <ModalPostagem />
-                            </Box>
-                            <Button variant="outlined" className='botao'>Ver Postagens</Button>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={6} >
-                        <img src="https://espressomontecarlo.com/wp-content/uploads/2019/02/cafe-bio-thumb.jpg" alt="" width="100%"  />
-                    </Grid>
-                    <Grid xs={12} className='postagens'>
-                        <TabPostagem />
-                    </Grid>
-                </Grid>
-            </>
-        );
-    }    
+    return (
+        <Container maxWidth="sm" className="topo">
+            <form onSubmit={onSubmit}>
+                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro tema</Typography>
+                <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <Button type="submit" variant="contained" color="primary">
+                    Finalizar
+                </Button>
+            </form>
+        </Container>
+    )
+}
 
 export default CadastroTema;
