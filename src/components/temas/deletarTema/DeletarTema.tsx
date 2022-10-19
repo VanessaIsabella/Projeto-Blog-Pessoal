@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 
-
 function DeletarTema() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
@@ -19,21 +18,21 @@ function DeletarTema() {
   );
 
     useEffect(() => {
-        if (token == "") {
-          toast.error('Você precisa estar logado'), {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: "colored",
-            progress: undefined,
-        };
-            navigate("/login")
-    
-        }
-    }, [token])
+      if (token == "") {
+        toast.error('Você precisa estar logado', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
+          navigate("/login")
+  
+      }
+  }, [token])
 
     useEffect(() =>{
         if(id !== undefined){
@@ -56,7 +55,7 @@ function DeletarTema() {
                 'Authorization': token
               }
             });
-            toast.success('Tema deletado com sucesso'), {
+            toast.success('Tema deletado com sucesso', {
               position: "top-right",
               autoClose: 2000,
               hideProgressBar: false,
@@ -65,7 +64,7 @@ function DeletarTema() {
               draggable: false,
               theme: "colored",
               progress: undefined,
-          };
+          });
           }
         
           function nao() {

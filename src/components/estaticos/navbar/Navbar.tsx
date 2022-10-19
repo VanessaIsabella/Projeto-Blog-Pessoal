@@ -8,7 +8,7 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/actions';
 import {toast} from 'react-toastify';
 
-function Navbar() {
+function Navbar(props: any) {
   const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
 );
@@ -70,6 +70,14 @@ navbarComponent= <AppBar className= "navbar" position="static">
       <Box mx={1} className="cursor">
         <Typography variant="h6" color="inherit" className="fonte">
           Cadastrar Temas
+        </Typography>
+      </Box>
+      </Link>
+
+      <Link to="/perfil" className="text-decorator-none">
+      <Box mx={1} className="cursor">
+        <Typography variant="h6" color="inherit" className="fonte">
+          Perfil
         </Typography>
       </Box>
       </Link>

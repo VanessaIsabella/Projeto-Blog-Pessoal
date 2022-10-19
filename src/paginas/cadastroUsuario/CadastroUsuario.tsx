@@ -45,11 +45,11 @@ function CadastroUsuario() {
   //  == > comparação basica => 2 = '2'
   //  === > comparação estrita => 2 != '2'
   async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (confirmarSenha === user.senha && user.senha.length >= 8) {
+    event.preventDefault()
+    if (confirmarSenha == user.senha && user.senha.length >= 8) {
       try {
         await cadastroUsuario('usuarios/cadastrar', user, setUserResult);
-        toast.success('Usuário cadastrado com sucesso'), {
+        toast.success('Usuário cadastrado com sucesso', {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -58,9 +58,9 @@ function CadastroUsuario() {
           draggable: false,
           theme: "colored",
           progress: undefined,
-      };
+    })
       } catch (error) {
-        toast.error('Falha ao cadastrar o usuário. Por favor, confira os campos'), {
+        toast.error('Falha ao cadastrar o usuário. Por favor, confira os campos', {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -69,7 +69,7 @@ function CadastroUsuario() {
           draggable: false,
           theme: "colored",
           progress: undefined,
-      };
+        });
       }
     } else {
       alert(
