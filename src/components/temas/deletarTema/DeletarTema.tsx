@@ -3,7 +3,6 @@ import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/c
 import {Box} from '@mui/material';
 import './DeletarTema.css';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { buscaId, deleteId } from '../../../service/Service';
 import Tema from '../../../model/Tema';
 import { useSelector } from 'react-redux';

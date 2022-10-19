@@ -1,4 +1,7 @@
+import Postagem from "./Postagem";
+
 interface User{
+    postagem?: Postagem[];
     id: number;
     nome: string;
     usuario: string;

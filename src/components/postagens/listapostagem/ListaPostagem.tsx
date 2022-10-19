@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Postagem from '../../../model/Postagem';
+import Postagem from '../../../model/Postagem'
 import { busca } from '../../../service/Service'
 import {Box} from '@mui/material'
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
@@ -52,7 +52,7 @@ function ListaPostagem() {
     <>
       {
         posts.map(post => (
-          <Box m={2} >
+          <Box m={2} key={post.id}>
             <Card variant="outlined">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
@@ -67,6 +67,9 @@ function ListaPostagem() {
                 <Typography variant="body2" component="p">
                   {post.tema?.descricao}
                 </Typography>
+                <Typography variant="body2" component="p">
+                  Postado por {post.usuario?.nome}
+                  </Typography>
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
@@ -95,4 +98,4 @@ function ListaPostagem() {
   )
 }
 
-export default ListaPostagem;
+export default ListaPostagem

@@ -18,6 +18,8 @@ import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
+
 function App() {
   return (
     <Provider store={store}>
@@ -27,31 +29,19 @@ function App() {
       <div style={{ minHeight: '100vh' }}>
         <Routes>
 
-          <Route path="/" element={<Login />} />
-
-          <Route path="/login" element={<Login />} />
-
           <Route path="/home" element={<Home />} />
-
+          <Route path="/login" element={<Login />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+        
 
           <Route path="/tema" element={<ListaTema />} />
-
-          <Route path="/posts" element={<ListaPostagem />} />
-
-          <Route path="/formularioPostagem" element={<CadastroPost />} />
-
-          <Route path="/formularioPostagem/:id" element={<CadastroPost />} />
-
-          <Route path="/formularioTema" element={<CadastroTema />} />
-
-          <Route path="/formularioTema/:id" element={<CadastroTema />} />
-
-          <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
-
+          <Route path="/cadastroTema" element={<CadastroTema />} />
+          <Route path="/atualizartema/:id" element={<CadastroTema />} />
           <Route path="/deletarTema/:id" element={<DeletarTema />} />
-
-
+          
+          <Route path="/posts" element={<ListaPostagem />} />
+          <Route path="/editarPosts/:id" element={<CadastroPost />} />      
+          <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />      
         </Routes>
       </div>
       <Footer />
