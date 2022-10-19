@@ -36,7 +36,7 @@ function App() {
         
 
           <Route path="/tema" element={<ListaTema />} />
-          <Route path="/cadastroTema" element={<CadastroTema />} />
+          <Route path="/formularioTema" element={<CadastroTema />} />
           <Route path="/atualizartema/:id" element={<CadastroTema />} />
           <Route path="/deletarTema/:id" element={<DeletarTema />} />
           

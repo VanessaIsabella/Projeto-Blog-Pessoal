@@ -12,16 +12,19 @@ import { toast } from 'react-toastify';
 function CadastroTema() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
-    const [tema, setTema] = useState<Tema>({
-        id: 0,
-        descricao: ''
-    })
+
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
 
+    const [tema, setTema] = useState<Tema>({
+        id: 0,
+        descricao: '',
+        postagem: null
+    });    
+
     useEffect(() => {
-        if (token == "") {
+        if (token === '') {
             toast.error('Você precisa estar logado', {
                 position: "top-right",
                 autoClose: 2000,
@@ -32,18 +35,18 @@ function CadastroTema() {
                 theme: "colored",
                 progress: undefined,
                 });
-            navigate("/login")
+            navigate('/login')
     
         }
-    }, [token])
+    }, [token]);
 
     useEffect(() =>{
         if(id !== undefined){
-            findById(id)
+            temaById(id)
         }
-    }, [id])
+    }, [id]);
 
-    async function findById(id: string) {
+    async function temaById(id: string) {
         buscaId(`/tema/${id}`, setTema, {
             headers: {
               'Authorization': token
@@ -56,7 +59,7 @@ function CadastroTema() {
             setTema({
                 ...tema,
                 [e.target.name]: e.target.value,
-            })
+            });
     
         }
         
